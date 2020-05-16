@@ -27,10 +27,15 @@ RUN mkdir -p /main
 
 WORKDIR /main
 
-COPY ./dockerfiles/py/runserver.sh /runserver.sh
-RUN chmod +x /runserver.sh
+COPY ./dockerfiles/py/runner.sh /runner.sh
+RUN chmod +x /runner.sh
 
-CMD echo "Ready.. Let's go!"
+COPY ./dockerfiles/py/runner_etl.sh /runner_etl.sh
+RUN chmod +x /runner_etl.sh
 
-ENTRYPOINT ["/runserver.sh"]
-# CMD ["/runserver.sh"]
+COPY ./dockerfiles/py/runner_ml.sh /runner_ml.sh
+RUN chmod +x /runner_ml.sh
+
+ENTRYPOINT ["/runner.sh"]
+
+# ENTRYPOINT ["/runserver.sh"]
