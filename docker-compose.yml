@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  py:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/py/Dockerfile
+    volumes:
+      - ./main:/main
+    env_file:
+      - ./.envs/.cassandra
+    depends_on:
+      - node_0
+      - node_1
+    links:
+      - node_0
+      - node_1
+    restart: unless-stopped
+
+    
+  node_0:
+    image: 'bitnami/cassandra:3'
+    restart: unless-stopped
+    ports:
+      - '10042:9042'
+    environment:
+      - CASSANDRA_CLUSTER_NAME=Mycluster
+      - CASSANDRA_SEEDS=node_0, node_1
+      - CASSANDRA_BROADCAST_ADDRESS=node_0
+      - CASSANDRA_USER=user
+      - CASSANDRA_PASSWORD=pass
+      - CASSANDRA_PASSWORD_SEEDER=yes
+    links:
+      - node_1
+
+  node_1:
+    image: 'bitnami/cassandra:3'
+    restart: unless-stopped
+    ports:
+      - '11042:9042'
+    environment:
+      - CASSANDRA_CLUSTER_NAME=Mycluster
+      - CASSANDRA_SEEDS=node_0, node_1
+      - CASSANDRA_BROADCAST_ADDRESS=node_0
+      - CASSANDRA_USER=user
+      - CASSANDRA_PASSWORD=pass
+      - CASSANDRA_PASSWORD_SEEDER=yes
