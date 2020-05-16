@@ -25,11 +25,12 @@ RUN pip install --no-cache-dir -r /requirements.txt
 
 RUN mkdir -p /main
 
-ADD ./main ./main
 WORKDIR /main
 
 COPY ./dockerfiles/py/runserver.sh /runserver.sh
 RUN chmod +x /runserver.sh
 
-# ENTRYPOINT ["/runserver.sh"]
+CMD echo "Ready.. Let's go!"
+
+ENTRYPOINT ["/runserver.sh"]
 # CMD ["/runserver.sh"]

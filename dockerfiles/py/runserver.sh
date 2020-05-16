@@ -8,16 +8,7 @@ set -o nounset
 
 function cassandra_ready(){
 python << END
-import sys
-
-try:
-    print('\n'*5,'Connecting to Cassandra . . .', '\n'*5)
-    sys.exit(0)
-except:
-    print('\n'*5,'Error In Connection . . .', '\n'*5)
-    sys.exit(-1)
-finally:
-    raise SystemExit(1)
+print('\n'*5,'Connecting to Cassandra . . .', '\n'*5)
 END
 }
 
@@ -29,6 +20,14 @@ cassandra_ready
 echo "Cassandra is Ready.. Let's go!"
 
 echo "print('built')" | python
+
+python db/printt.py
+
+sleep 50
+
+python project.py
+
+echo "Done! . . . . ."
 
 
 exec "$@"

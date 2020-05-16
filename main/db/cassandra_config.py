@@ -28,13 +28,12 @@ class Cassandra:
         )
 
         self.session = self.cluster.connect()
-        create_key_space = f"""
-                CREATE KEYSPACE IF NOT EXISTS {self.key_space}
+        self.session.execute("""
+                CREATE KEYSPACE IF NOT EXISTS test_key_space
                 WITH REPLICATION =
                 { 'class' : 'SimpleStrategy', 'replication_factor': '2'}  
                 AND durable_writes = true;
-                """
-        self.session.execute(create_key_space)
+                """)
         self.session.set_keyspace(self.key_space)
 
         register_connection(str(self.session), session=self.session)
