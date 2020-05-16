@@ -30,12 +30,6 @@ WORKDIR /main
 COPY ./dockerfiles/py/runner.sh /runner.sh
 RUN chmod +x /runner.sh
 
-COPY ./dockerfiles/py/runner_etl.sh /runner_etl.sh
-RUN chmod +x /runner_etl.sh
-
-COPY ./dockerfiles/py/runner_ml.sh /runner_ml.sh
-RUN chmod +x /runner_ml.sh
-
 ENTRYPOINT ["/runner.sh"]
 
 # ENTRYPOINT ["/runserver.sh"]
