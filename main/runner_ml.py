@@ -1,6 +1,7 @@
 import os
 import logging
 from pandas import DataFrame
+from app.ml.regression import adj_close_model
 from app.db.cassandra_config import Cassandra
 
 logging.basicConfig(filename='MLlogs.log',
@@ -31,11 +32,7 @@ def main():
         
         df = rows._current_rows
 
-        print(df.columns)
-        df.sort_values("date", axis = 0, ascending = True, 
-                 inplace = True, na_position ='last')
-        print(df.shape)
-        print(df.head())
+        adj_close_model(df)
 
         logging.info('Loading data into the tables')
             

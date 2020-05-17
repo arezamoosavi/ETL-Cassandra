@@ -5,6 +5,6 @@ dataPath = 'app/data/Google.csv'
 df = read_csv(dataPath)
 df['Date'] = df['Date'].astype('datetime64')
 
-col = "Date Open High Low Close Volume Ex_Dividend Split_Ratio Adj_Open Adj_High Adj_Low Adj_Close Adj_Volume"
+col = "date open high low close volume ex_dividend split_ratio adj_open adj_high adj_low adj_close adj_volume"
 df.columns = col.split(" ")
 

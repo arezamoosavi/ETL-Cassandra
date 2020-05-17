@@ -15,25 +15,25 @@ def main():
     try:
         logging.info('Loading data into the tables')
         query_insert_stockss = "INSERT INTO stock " \
-                                "(Date, Open, High, Low, Close, Volume, Ex_Dividend, Split_Ratio, Adj_Open, Adj_High, Adj_Low, Adj_Close, Adj_Volume) " \
+                                "(date, open, high, low, close, volume, ex_dividend, split_ratio, adj_open, adj_high, adj_low, adj_close, adj_volume) " \
                                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
         prepared_stocks = c.session.prepare(query_insert_stockss)
         
         for index, row in df.iterrows():
             c.session.execute(prepared_stocks
-                            , (row['Date']
-                               , row['Open']
-                               , row['High']
-                               , row['Low']
-                               , row['Close']
-                               , row['Volume']
-                               , row['Ex_Dividend']
-                               , row['Split_Ratio']
-                               , row['Adj_Open']
-                               , row['Adj_High']
-                               , row['Adj_Low']
-                               , row['Adj_Close']
-                               , row['Adj_Volume']),  timeout=None)
+                            , (row['date']
+                               , row['open']
+                               , row['high']
+                               , row['low']
+                               , row['close']
+                               , row['volume']
+                               , row['ex_dividend']
+                               , row['split_ratio']
+                               , row['adj_open']
+                               , row['adj_high']
+                               , row['adj_low']
+                               , row['adj_close']
+                               , row['adj_volume']),  timeout=None)
             
     except Exception as e:
         print(e)

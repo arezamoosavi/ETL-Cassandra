@@ -17,20 +17,20 @@ def main():
             c.session.execute(drop_table)
 
         create_appointments_table = "CREATE TABLE IF NOT EXISTS stock "\
-                                    "(Date timestamp" \
-                                    ", Open float" \
-                                    ", High float" \
-                                    ", Low float" \
-                                    ", Close float" \
-                                    ", Volume float" \
-                                    ", Ex_Dividend float" \
-                                    ", Split_Ratio float" \
-                                    ", Adj_Open float" \
-                                    ", Adj_High float" \
-                                    ", Adj_Low float" \
-                                    ", Adj_Close float" \
-                                    ", Adj_Volume float" \
-                                    ", PRIMARY KEY (Date))"
+                                    "(date timestamp" \
+                                    ", open float" \
+                                    ", high float" \
+                                    ", low float" \
+                                    ", close float" \
+                                    ", volume float" \
+                                    ", ex_dividend float" \
+                                    ", split_ratio float" \
+                                    ", adj_open float" \
+                                    ", adj_high float" \
+                                    ", adj_low float" \
+                                    ", adj_close float" \
+                                    ", adj_volume float" \
+                                    ", PRIMARY KEY (date))"
                                     
         logging.info('Creating stock table in Cassandra')
 
