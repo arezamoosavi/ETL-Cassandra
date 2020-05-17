@@ -10,7 +10,7 @@ class Stock(Model):
     __table_name__ = 'stock'
 
     id = columns.Integer(primary_key=True)
-    Date = columns.Date()
+    Date = columns.DateTime()
     Open = columns.Float()
     High = columns.Float()
     Low = columns.Float()

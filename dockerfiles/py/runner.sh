@@ -24,12 +24,14 @@ echo "Cassandra is Ready.. Let's go!"
 
 echo "print('Runner')" | python
 
-while python connect.py; do echo 'connecting to cassandra...'; sleep 10; done;
+while python create_table.py; do echo 'connecting to cassandra...'; sleep 5; done;
 
-echo "Done! . . . . ."
+echo "createTable----Done! . . . . ."
 
 while python runner_etl.py; do echo 'doing ETL...'; sleep 5; done;
 
-while python runner_ml.py; do echo 'doing ML...'; sleep 5; done;
+echo "ETL----Done! . . . . ."
+
+# while python runner_ml.py; do echo 'doing ML...'; sleep 5; done;
 
 exec "$@"
