@@ -31,9 +31,10 @@ def main():
                                     ", Adj_Close float" \
                                     ", Adj_Volume float" \
                                     ", PRIMARY KEY (Date))"
+                                    
         logging.info('Creating stock table in Cassandra')
 
-        c.session.execute(create_appointments_table)
+        c.session.execute(create_appointments_table,  timeout=None)
 
         print("T","A"*8)
 

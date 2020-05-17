@@ -33,7 +33,7 @@ def main():
                                , row['Adj_High']
                                , row['Adj_Low']
                                , row['Adj_Close']
-                               , row['Adj_Volume']))
+                               , row['Adj_Volume']),  timeout=None)
             
     except Exception as e:
         print(e)

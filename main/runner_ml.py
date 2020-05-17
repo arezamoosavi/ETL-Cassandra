@@ -13,9 +13,6 @@ def pandas_factory(colnames, rows):
     return DataFrame(rows, columns=colnames)
 
 
-
-
-
 def main():
     """
     Main script that performs the ML
@@ -33,6 +30,11 @@ def main():
         rows = c.session.execute(query, timeout=None)
         
         df = rows._current_rows
+
+        print(df.columns)
+        df.sort_values("date", axis = 0, ascending = True, 
+                 inplace = True, na_position ='last')
+        print(df.shape)
         print(df.head())
 
         logging.info('Loading data into the tables')
