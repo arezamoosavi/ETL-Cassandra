@@ -32,6 +32,10 @@ while python runner_etl.py; do echo 'doing ETL...'; sleep 5; done;
 
 echo "ETL----Done! . . . . ."
 
-# while python runner_ml.py; do echo 'doing ML...'; sleep 5; done;
+sleep 5
+
+while python runner_ml.py; do echo 'doing ML...'; sleep 5; done;
+
+echo "ML----Done! . . . . ."
 
 exec "$@"
