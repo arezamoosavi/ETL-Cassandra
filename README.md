@@ -20,3 +20,5 @@ DB: Cassandra
 
 
 Build: docker, docker-compose
+
+## [Medium](https://medium.com/@sdamoosavi/google-stock-data-etl-with-cassandra-and-predictive-modeling-with-it-756a56b49ea9)
